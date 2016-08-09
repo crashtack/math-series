@@ -28,23 +28,23 @@ LUCAS_TABLE = [
 
 @pytest.mark.parametrize('n, result', FIB_TABLE)
 def test_fib(n, result):
-    from fib import fib
+    from series import fib
     assert fib(n) == result
 
 
 @pytest.mark.parametrize('n, result', LUCAS_TABLE)
 def test_lucas(n, result):
-    from fib import lucas
+    from series import lucas
     assert lucas(n) == result
 
 
 @pytest.mark.parametrize('n, result', FIB_TABLE)
 def test_generic_sequence_fib(n, result):
-    from fib import generic_sequence
+    from series import generic_sequence
     assert generic_sequence(n, 0) == result
 
 
 @pytest.mark.parametrize('n, result', LUCAS_TABLE)
 def test_generic_sequence_lucas(n, result):
-    from fib import generic_sequence
+    from series import generic_sequence
     assert generic_sequence(n, 2) == result
