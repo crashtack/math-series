@@ -57,14 +57,24 @@ def test_fib_input_type():
 
 def test_lucas_input_type():
     from series import lucas
-    assert lucas('hello') == 'This is not an integer'
+    assert lucas('hello') == 'That is not going to work'
 
 
 def test_generic_sequence_input_type():
     from series import generic_sequence
-    assert generic_sequence('hello', 'hello') == 'This is not an integer'
+    assert generic_sequence('hello', 'hello') == 'That is not going to work'
 
 
 def test_fib_input_limit():
     from series import fib
     assert fib(35) == 'That is not going to work'
+
+
+def test_lucas_input_limit():
+    from series import lucas
+    assert lucas(35) == 'That is not going to work'
+
+
+def test_generic_sequence_input_limit():
+    from series import generic_sequence
+    assert generic_sequence(35, 2) == 'That is not going to work'

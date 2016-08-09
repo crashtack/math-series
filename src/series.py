@@ -14,8 +14,8 @@ def fib(n):
 
 
 def lucas(n):
-    if type(n) != int:
-        return 'This is not an integer'
+    if type(n) != int or n >= 35:
+        return 'That is not going to work'
     if n == 0:
         return 2
     elif n == 1:
@@ -24,8 +24,8 @@ def lucas(n):
 
 
 def generic_sequence(n, s):
-    if type(n) != int or type(s) != int:
-        return 'This is not an integer'
+    if (type(n) != int or type(s) != int) or n >= 35:
+        return 'That is not going to work'
     if n == 0:
         return s
     elif n == 1:
