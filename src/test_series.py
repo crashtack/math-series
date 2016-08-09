@@ -53,3 +53,8 @@ def test_generic_sequence_lucas(n, result):
 def test_fib_input_type():
     from series import fib
     assert fib('hello') == 'This is not an integer'
+
+
+def test_lucas_input_type():
+    from series import lucas
+    assert lucas('hello') == 'This is not an integer'
