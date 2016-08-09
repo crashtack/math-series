@@ -25,12 +25,6 @@ LUCAS_TABLE = [
     (8, 47)
 ]
 
-PARAM_TABLE = [
-    ('fib', 'Hello', 'This is not an integer'),
-    ('lucas', 'Hello', 'This is not an integer'),
-    ('generic_sequence', 'Hello', 'This is not an integer')
-]
-
 
 @pytest.mark.parametrize('n, result', FIB_TABLE)
 def test_fib(n, result):
@@ -56,10 +50,9 @@ def test_generic_sequence_lucas(n, result):
     assert generic_sequence(n, 2) == result
 
 
-@pytest.mark.parametrize('func, test, response', PARAM_TABLE)
-def test_input_type(func, test, response):
-    from series import func
-    assert func(test) == response
+def test_fib_input_type():
+    from series import fib
+    assert fib('hello') == 'That is not going to work'
 
 
 def test_lucas_input_type():
@@ -70,3 +63,8 @@ def test_lucas_input_type():
 def test_generic_sequence_input_type():
     from series import generic_sequence
     assert generic_sequence('hello', 'hello') == 'This is not an integer'
+
+
+def test_fib_input_limit():
+    from series import fib
+    assert fib(35) == 'That is not going to work'
