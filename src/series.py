@@ -24,6 +24,8 @@ def lucas(n):
 
 
 def generic_sequence(n, s):
+    if type(n) != int or type(s) != int:
+        return 'This is not an integer'
     if n == 0:
         return s
     elif n == 1:

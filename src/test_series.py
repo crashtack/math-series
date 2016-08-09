@@ -58,3 +58,8 @@ def test_fib_input_type():
 def test_lucas_input_type():
     from series import lucas
     assert lucas('hello') == 'This is not an integer'
+
+
+def test_generic_sequence_input_type():
+    from series import generic_sequence
+    assert generic_sequence('hello', 'hello') == 'This is not an integer'
