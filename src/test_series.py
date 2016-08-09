@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 import pytest
 
+def import_class(modulename, classname):
+    ''' Returns imported class. '''
+    try:
+        return getattr(__import__(modulename, globals(), locals(), [classname], -1), classname)
+    except AttributeError:
+        print 'Error in importing class. "%s" has no class "%s"' % (modulename, classname)
+        return None
+    except ImportError as e:
+        print 'Error in importing class: %s' % (e)
+        return None
+
 FIB_TABLE = [
     (0, 0),
     (1, 1),
