@@ -1,35 +1,54 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-FIB_TABLE = [
-    (0, 0),
-    (1, 1),
+FIBONACCI_TABLE = [
+    (-5, -1),
+    (0, -1),
+    ('string', -2),
+    (1, 0),
     (2, 1),
-    (3, 2),
-    (4, 3),
-    (5, 5),
-    (6, 8),
-    (7, 13),
-    (8, 21)
+    (3, 1),
+    (4, 2),
+    (5, 3),
+    (6, 5),
+    (7, 8),
+    (8, 13),
 ]
 
 LUCAS_TABLE = [
-    (0, 2),
-    (1, 1),
-    (2, 3),
-    (3, 4),
-    (4, 7),
-    (5, 11),
-    (6, 18),
-    (7, 29),
-    (8, 47)
+    (-5, -1),
+    (0, -1),
+    ('string', -2),
+    (1, 2),
+    (2, 1),
+    (3, 3),
+    (4, 4),
+    (5, 7),
+    (6, 11),
+    (7, 18),
+    (8, 29),
+]
+
+CUSTOM_TABLE = [
+    ('foo', 1, 2, -2),
+    (2, 1, 'foo', -2),
+    ('2', 1, 2, 2),
+    (2, '1', 2, 2),
+    (3, 2, 3, 5),
+    (4, 4, 5, 14)
 ]
 
 
-@pytest.mark.parametrize('n, result', FIB_TABLE)
+@pytest.mark.parametrize('n, result', FIBONACCI_TABLE)
 def test_fib(n, result):
     from series import fib
     assert fib(n) == result
+
+
+@pytest.mark.parametrize('n, result', FIBONACCI_TABLE)
+def test_fib_recursive(n, result):
+    from series import fib_recursive
+    assert fib_recursive(n) == result
 
 
 @pytest.mark.parametrize('n, result', LUCAS_TABLE)
@@ -38,43 +57,13 @@ def test_lucas(n, result):
     assert lucas(n) == result
 
 
-@pytest.mark.parametrize('n, result', FIB_TABLE)
-def test_generic_sequence_fib(n, result):
-    from series import generic_sequence
-    assert generic_sequence(n, 0) == result
+@pytest.mark.parametrize('n, result', FIBONACCI_TABLE)
+def test_sum_series1(n, result):
+    from series import sum_series
+    assert sum_series(n) == result
 
 
-@pytest.mark.parametrize('n, result', LUCAS_TABLE)
-def test_generic_sequence_lucas(n, result):
-    from series import generic_sequence
-    assert generic_sequence(n, 2) == result
-
-
-def test_fib_input_type():
-    from series import fib
-    assert fib('hello') == 'That is not going to work'
-
-
-def test_lucas_input_type():
-    from series import lucas
-    assert lucas('hello') == 'That is not going to work'
-
-
-def test_generic_sequence_input_type():
-    from series import generic_sequence
-    assert generic_sequence('hello', 'hello') == 'That is not going to work'
-
-
-def test_fib_input_limit():
-    from series import fib
-    assert fib(35) == 'That is not going to work'
-
-
-def test_lucas_input_limit():
-    from series import lucas
-    assert lucas(35) == 'That is not going to work'
-
-
-def test_generic_sequence_input_limit():
-    from series import generic_sequence
-    assert generic_sequence(35, 2) == 'That is not going to work'
+@pytest.mark.parametrize('n, one, two, result', CUSTOM_TABLE)
+def test_sum_series2(n, one, two, result):
+    from series import sum_series
+    assert sum_series(n, one, two) == result
